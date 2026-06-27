@@ -9,22 +9,35 @@ export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
+  // Bulletproof scroll detection using IntersectionObserver
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollPos = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
-      setScrolled(scrollPos > 20);
-    };
+    let sentinel = document.getElementById("navbar-scroll-sentinel");
     
-    // Attach to both window and document to guarantee mobile browser compatibility
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    document.addEventListener("scroll", handleScroll, { passive: true });
-    
-    // Initial check
-    handleScroll();
-    
+    // Create an invisible pixel at the very top of the page
+    if (!sentinel) {
+      sentinel = document.createElement("div");
+      sentinel.id = "navbar-scroll-sentinel";
+      sentinel.style.position = "absolute";
+      sentinel.style.top = "0";
+      sentinel.style.left = "0";
+      sentinel.style.width = "100%";
+      sentinel.style.height = "10px";
+      sentinel.style.pointerEvents = "none";
+      document.body.appendChild(sentinel);
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        // If the top 10px is not intersecting the viewport, we have scrolled down!
+        setScrolled(!entry.isIntersecting);
+      },
+      { threshold: 0 }
+    );
+
+    observer.observe(sentinel);
+
     return () => {
-      window.removeEventListener("scroll", handleScroll);
-      document.removeEventListener("scroll", handleScroll);
+      observer.disconnect();
     };
   }, []);
 
@@ -68,7 +81,7 @@ export default function Navbar() {
             ))}
           </div>
 
-          {/* CTA Button */}
+          {/* Desktop CTA Button */}
           <div className="hidden lg:flex items-center">
             <Link
               href="#partner"
@@ -78,14 +91,14 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Mobile menu button */}
+          {/* Bulletproof Mobile Menu Button */}
           <div className="lg:hidden flex items-center relative z-[10000]">
-            <button
-              type="button"
-              aria-label="Toggle navigation menu"
+            <div
+              role="button"
+              tabIndex={0}
+              aria-label="Toggle menu"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              style={{ touchAction: 'manipulation' }}
-              className={`focus:outline-none p-4 -mr-4 rounded-lg transition-colors ${navActive ? 'text-charcoal-dark active:bg-slate-100' : 'text-white active:bg-white/10 drop-shadow-md'}`}
+              className={`cursor-pointer p-3 -mr-3 rounded-lg transition-colors ${navActive ? 'text-charcoal-dark' : 'text-white drop-shadow-md'}`}
             >
               <div className="pointer-events-none flex items-center justify-center">
                 {isMobileMenuOpen ? (
@@ -94,35 +107,35 @@ export default function Navbar() {
                   <Menu size={32} strokeWidth={2.5} />
                 )}
               </div>
-            </button>
+            </div>
           </div>
         </div>
       </nav>
 
-      {/* Mobile Menu Fullscreen Overlay */}
-      {isMobileMenuOpen && (
-        <div className="lg:hidden fixed inset-0 z-[9990] bg-white flex flex-col pt-32 px-6 animate-in fade-in duration-200 overflow-y-auto">
-          <div className="flex flex-col space-y-4 pb-12">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="block text-2xl font-bold text-charcoal-dark hover:text-emerald-base transition-colors border-b border-slate-100 pb-4"
-              >
-                {link.name}
-              </Link>
-            ))}
+      {/* Bulletproof Mobile Menu CSS Overlay */}
+      <div 
+        className={`lg:hidden fixed inset-0 z-[9990] bg-white flex flex-col pt-32 px-6 transition-transform duration-300 ease-in-out ${isMobileMenuOpen ? 'translate-y-0 shadow-2xl' : '-translate-y-full'}`}
+      >
+        <div className="flex flex-col space-y-4 pb-12">
+          {navLinks.map((link) => (
             <Link
-              href="#partner"
+              key={link.name}
+              href={link.href}
               onClick={() => setIsMobileMenuOpen(false)}
-              className="block w-full text-center bg-emerald-base text-white px-5 py-4 rounded-xl text-lg font-bold shadow-lg mt-6"
+              className="block text-2xl font-bold text-charcoal-dark hover:text-emerald-base transition-colors border-b border-slate-100 pb-4"
             >
-              Partner Portal
+              {link.name}
             </Link>
-          </div>
+          ))}
+          <Link
+            href="#partner"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="block w-full text-center bg-emerald-base text-white px-5 py-4 rounded-xl text-lg font-bold shadow-lg mt-6"
+          >
+            Partner Portal
+          </Link>
         </div>
-      )}
+      </div>
     </>
   );
 }
