@@ -131,7 +131,7 @@ export default function Navbar() {
           
           {/* Minimalist Mobile Inline Menu (Expands downward seamlessly) */}
           <div 
-            className={`lg:hidden w-full overflow-hidden transition-all duration-300 ease-in-out flex flex-col ${isMobileMenuOpen ? 'max-h-80 opacity-100 mt-4' : 'max-h-0 opacity-0 mt-0 pointer-events-none'}`}
+            className={`lg:hidden w-full overflow-hidden transition-all duration-300 ease-in-out flex flex-col ${isMobileMenuOpen ? 'max-h-[500px] opacity-100 mt-4' : 'max-h-0 opacity-0 mt-0 pointer-events-none'}`}
           >
             <div className="flex flex-col space-y-1 pb-4">
               {navLinks.map((link) => (
