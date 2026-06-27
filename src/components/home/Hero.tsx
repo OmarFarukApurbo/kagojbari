@@ -34,7 +34,7 @@ export default function Hero() {
         
         <div className="flex flex-col sm:flex-row gap-4 mt-12">
           <Link 
-            href="#partner"
+            href="/partner"
             className="bg-emerald-base hover:bg-emerald-glow text-white px-8 py-4 rounded-lg text-base font-bold transition-all duration-300 shadow-xl shadow-emerald-base/20 hover:shadow-emerald-glow/40 hover:-translate-y-1 text-center"
           >
             Partner with Us
