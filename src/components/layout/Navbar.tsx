@@ -54,7 +54,7 @@ export default function Navbar() {
   return (
     <>
       <nav className={`fixed top-0 left-0 right-0 z-[9999] transition-all duration-300 ${navActive ? 'bg-white/95 backdrop-blur-xl shadow-md py-3 md:py-4' : 'bg-transparent py-5 md:py-6'}`}>
-        <div className="max-w-7xl mx-auto flex justify-between items-center px-6 md:px-12">
+        <div className="max-w-7xl mx-auto flex justify-between items-center px-6 md:px-12 relative">
           
           {/* Logo */}
           <Link href="/" className="flex-shrink-0 flex items-center group relative z-[10000]">
@@ -109,33 +109,35 @@ export default function Navbar() {
               </div>
             </div>
           </div>
+          
+          {/* Minimalist Mobile Dropdown Menu */}
+          <div 
+            className={`lg:hidden absolute top-16 right-6 w-56 bg-white/95 backdrop-blur-2xl border border-slate-100 rounded-2xl shadow-[0_20px_40px_-15px_rgba(0,0,0,0.15)] flex flex-col p-2 transition-all duration-300 ease-out origin-top-right z-[9990] ${isMobileMenuOpen ? 'scale-100 opacity-100' : 'scale-95 opacity-0 pointer-events-none'}`}
+          >
+            {navLinks.map((link) => (
+              <Link
+                key={link.name}
+                href={link.href}
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="px-4 py-3 text-[15px] font-bold text-charcoal-dark hover:text-emerald-base hover:bg-emerald-base/5 rounded-xl transition-colors"
+              >
+                {link.name}
+              </Link>
+            ))}
+            
+            <div className="h-px bg-slate-100 my-1 mx-2"></div>
+            
+            <Link
+              href="#partner"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="mt-1 mx-2 px-4 py-2.5 bg-emerald-base text-white text-center rounded-xl text-[15px] font-bold shadow-md hover:bg-emerald-deep transition-colors"
+            >
+              Partner Portal
+            </Link>
+          </div>
+          
         </div>
       </nav>
-
-      {/* Bulletproof Mobile Menu CSS Overlay */}
-      <div 
-        className={`lg:hidden fixed inset-0 z-[9990] bg-white flex flex-col pt-32 px-6 transition-transform duration-300 ease-in-out ${isMobileMenuOpen ? 'translate-y-0 shadow-2xl' : '-translate-y-full'}`}
-      >
-        <div className="flex flex-col space-y-4 pb-12">
-          {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              href={link.href}
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="block text-2xl font-bold text-charcoal-dark hover:text-emerald-base transition-colors border-b border-slate-100 pb-4"
-            >
-              {link.name}
-            </Link>
-          ))}
-          <Link
-            href="#partner"
-            onClick={() => setIsMobileMenuOpen(false)}
-            className="block w-full text-center bg-emerald-base text-white px-5 py-4 rounded-xl text-lg font-bold shadow-lg mt-6"
-          >
-            Partner Portal
-          </Link>
-        </div>
-      </div>
     </>
   );
 }
