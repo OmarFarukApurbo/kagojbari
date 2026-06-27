@@ -27,11 +27,11 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${navActive ? 'bg-white/95 backdrop-blur-xl shadow-md py-4' : 'bg-transparent py-6'}`}>
+      <nav className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${navActive ? 'bg-white/95 backdrop-blur-xl shadow-md py-4' : 'bg-transparent py-6'}`}>
         <div className="max-w-7xl mx-auto flex justify-between items-center px-6 md:px-12">
           
           {/* Logo */}
-          <Link href="/" className="flex-shrink-0 flex items-center group">
+          <Link href="/" className="flex-shrink-0 flex items-center group relative z-[101]">
             <Image
               src="/KB_Logo_Text.png"
               alt="Kagojbari EdTech Ltd Logo"
@@ -66,12 +66,18 @@ export default function Navbar() {
           </div>
 
           {/* Mobile menu button */}
-          <div className="lg:hidden flex items-center">
+          <div className="lg:hidden flex items-center relative z-[101]">
             <button
+              type="button"
+              aria-label="Toggle navigation menu"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className={`focus:outline-none transition-colors p-2 ${navActive ? 'text-charcoal-dark hover:text-emerald-base' : 'text-white hover:text-emerald-glow'}`}
+              className={`focus:outline-none transition-colors p-3 -mr-3 rounded-lg ${navActive ? 'text-charcoal-dark' : 'text-white drop-shadow-md'}`}
             >
-              {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+              {isMobileMenuOpen ? (
+                <X size={32} className="pointer-events-none" />
+              ) : (
+                <Menu size={32} className="pointer-events-none" />
+              )}
             </button>
           </div>
         </div>
@@ -79,7 +85,7 @@ export default function Navbar() {
 
       {/* Mobile Menu Fullscreen Overlay */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden fixed inset-0 z-40 bg-white flex flex-col pt-32 px-6 animate-in fade-in duration-200">
+        <div className="lg:hidden fixed inset-0 z-[90] bg-white flex flex-col pt-32 px-6 animate-in fade-in duration-200">
           <div className="flex flex-col space-y-4">
             {navLinks.map((link) => (
               <Link
