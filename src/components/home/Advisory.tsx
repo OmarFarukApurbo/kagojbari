@@ -27,7 +27,7 @@ export default function Advisory() {
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-charcoal-dark mb-4">Advisory Panel</h2>
-          <p className="text-slate-500">Advisory panel headshots with advisory quotes</p>
+          <p className="text-slate-500">Guided by visionary leaders shaping the future of education in Bangladesh.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

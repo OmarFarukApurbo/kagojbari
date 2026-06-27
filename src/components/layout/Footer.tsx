@@ -16,7 +16,7 @@ export default function Footer() {
             height={56}
             className="w-36 md:w-48 h-auto brightness-0 invert opacity-90 flex-shrink-0"
           />
-          <div className="h-full md:border-l md:border-slate-600 md:pl-6">
+          <div className="md:border-l md:border-slate-600 md:pl-6 flex items-center h-auto py-2">
             <p className="text-sm text-slate-400 leading-relaxed max-w-sm">
               Kagojbari EdTech Ltd is building the ultimate digital and physical backbone for education across Bangladesh. We integrate supply infrastructure, health, and student identity into one powerful platform.
             </p>
@@ -24,12 +24,13 @@ export default function Footer() {
         </div>
 
         {/* Column 2: Quick Links */}
-        <div className="flex flex-col space-y-4 md:mt-2">
-          <h4 className="text-white font-bold text-lg mb-2">Company</h4>
-          <Link href="#vision" className="text-sm text-slate-400 hover:text-white transition-colors">About Us</Link>
-          <Link href="#partner" className="text-sm text-slate-400 hover:text-white transition-colors">Contact Us</Link>
-          <Link href="#" className="text-sm text-slate-400 hover:text-white transition-colors">Terms of Contracts</Link>
-          <Link href="#" className="text-sm text-slate-400 hover:text-white transition-colors">Privacy Policy</Link>
+        <div className="flex flex-col space-y-3 md:mt-2">
+          <h4 className="text-white font-bold text-base mb-2">Company</h4>
+          <Link href="/about" className="text-sm text-slate-400 hover:text-white transition-colors">About Us</Link>
+          <Link href="/campaigns" className="text-sm text-slate-400 hover:text-white transition-colors">Campaigns & Projects</Link>
+          <Link href="/press" className="text-sm text-slate-400 hover:text-white transition-colors">Press Coverage</Link>
+          <Link href="/donate" className="text-sm text-slate-400 hover:text-white transition-colors">Sponsor & Donate</Link>
+          <Link href="/#partner" className="text-sm text-slate-400 hover:text-white transition-colors">Partner Portal</Link>
         </div>
 
         {/* Column 3: Contact Info */}

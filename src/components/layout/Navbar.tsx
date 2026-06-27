@@ -3,11 +3,13 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
 
   // Bulletproof scroll detection using IntersectionObserver
   useEffect(() => {
@@ -57,13 +59,20 @@ export default function Navbar() {
   }, [isMobileMenuOpen]);
 
   const navActive = scrolled || isMobileMenuOpen;
+  
+  // Is the current page one with a dark hero banner at the very top?
+  const isDarkBgPage = pathname === "/" || pathname === "/home";
+  
+  // Use dark text when navbar has a white background (navActive) OR when the page itself has a light background at the top
+  const useDarkText = navActive || !isDarkBgPage;
 
   const navLinks = [
-    { name: "Vision", href: "#vision" },
-    { name: "Traction", href: "#traction" },
-    { name: "5 Pillars", href: "#pillars" },
-    { name: "Projects", href: "#projects" },
-    { name: "Advisory", href: "#advisory" },
+    { name: "Home", href: "/" },
+    { name: "About Us", href: "/about" },
+    { name: "Ecosystem", href: "/#pillars" },
+    { name: "Impact", href: "/#impact" },
+    { name: "Campaigns", href: "/campaigns" },
+    { name: "Press", href: "/press" },
   ];
 
   return (
@@ -81,7 +90,7 @@ export default function Navbar() {
                 alt="Kagojbari EdTech Ltd Logo"
                 width={240}
                 height={70}
-                className={`w-auto object-contain transition-all duration-300 ${navActive ? 'h-10 md:h-12' : 'h-10 md:h-16 brightness-0 invert drop-shadow-md'} group-hover:scale-105`}
+                className={`w-auto object-contain transition-all duration-300 ${navActive ? 'h-10 md:h-12' : 'h-10 md:h-16'} ${useDarkText ? '' : 'brightness-0 invert drop-shadow-md'} group-hover:scale-105`}
                 priority
               />
             </Link>
@@ -92,7 +101,7 @@ export default function Navbar() {
                 <Link
                   key={link.name}
                   href={link.href}
-                  className={`text-sm font-bold transition-colors duration-200 ${navActive ? 'text-slate-600 hover:text-emerald-deep' : 'text-slate-200 hover:text-white drop-shadow-md'}`}
+                  className={`text-sm font-bold transition-colors duration-200 ${useDarkText ? 'text-slate-600 hover:text-emerald-deep' : 'text-slate-200 hover:text-white drop-shadow-md'}`}
                 >
                   {link.name}
                 </Link>
@@ -100,12 +109,12 @@ export default function Navbar() {
             </div>
 
             {/* Desktop CTA Button */}
-            <div className="hidden lg:flex items-center">
+            <div className="hidden lg:flex items-center space-x-4">
               <Link
-                href="#partner"
-                className={`px-6 py-2.5 rounded-md text-sm font-bold transition-all duration-300 shadow-md ${navActive ? 'bg-emerald-base hover:bg-emerald-deep text-white shadow-emerald-base/20' : 'bg-white hover:bg-emerald-base hover:text-white text-emerald-deep shadow-black/20'}`}
+                href="/donate"
+                className={`px-5 py-2.5 rounded-md text-sm font-bold transition-all duration-300 shadow-md bg-amber-500 hover:bg-amber-600 text-white shadow-amber-500/20`}
               >
-                Partner Portal
+                Sponsor Us
               </Link>
             </div>
 
@@ -116,7 +125,7 @@ export default function Navbar() {
                 tabIndex={0}
                 aria-label="Toggle menu"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className={`cursor-pointer p-3 -mr-3 rounded-lg transition-colors ${navActive ? 'text-charcoal-dark' : 'text-white drop-shadow-md'}`}
+                className={`cursor-pointer p-3 -mr-3 rounded-lg transition-colors ${useDarkText ? 'text-charcoal-dark' : 'text-white drop-shadow-md'}`}
               >
                 <div className="pointer-events-none flex items-center justify-center">
                   {isMobileMenuOpen ? (
@@ -148,11 +157,11 @@ export default function Navbar() {
               <div className="h-px bg-slate-200/50 my-3"></div>
               
               <Link
-                href="#partner"
+                href="/donate"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="mt-1 w-full px-4 py-3 bg-emerald-base text-white text-center rounded-xl text-[15px] font-bold shadow-md shadow-emerald-base/20 hover:bg-emerald-deep transition-all active:scale-95"
+                className="mt-1 w-full px-4 py-3 bg-amber-500 text-white text-center rounded-xl text-[15px] font-bold shadow-md shadow-amber-500/20 hover:bg-amber-600 transition-all active:scale-95 mb-2"
               >
-                Partner Portal
+                Sponsor Us
               </Link>
             </div>
           </div>

@@ -6,7 +6,7 @@ export default function Traction() {
   ];
 
   return (
-    <section className="py-16 px-6 bg-white">
+    <section id="impact" className="py-16 px-6 bg-white scroll-mt-28">
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-10">
           <h2 className="text-2xl md:text-3xl font-bold text-charcoal-dark">Nationwide Impact</h2>
