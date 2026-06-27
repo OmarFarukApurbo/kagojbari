@@ -1,86 +1,58 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone, Globe } from "lucide-react";
 
 export default function Footer() {
-  const footerLinks = [
-    { name: "The Vision", href: "#vision" },
-    { name: "5 Pillars", href: "#pillars" },
-    { name: "The Backbone School", href: "#projects" },
-    { name: "News Portal", href: "#" },
-    { name: "Advisory Panel", href: "#advisory" },
-  ];
-
   return (
-    <footer className="bg-charcoal-dark text-slate-400 py-16 px-6 md:px-12 border-t border-slate-800">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
+    <footer className="bg-[#2D2D2D] text-slate-300 py-16 px-6">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 border-b border-slate-700 pb-12 mb-8">
         
-        {/* Column 1: Brand & Contact */}
-        <div className="flex flex-col space-y-6">
-          <Link href="/" className="inline-block">
-            <Image
-              src="/KB_Logo_Text.png"
-              alt="Kagojbari EdTech Ltd Logo"
-              width={180}
-              height={48}
-              className="h-12 w-auto brightness-0 invert opacity-90"
-            />
-          </Link>
-          <p className="text-sm leading-relaxed max-w-sm">
-            One integrated platform connecting education, health, and transport services. Empowering every learner in Bangladesh.
-          </p>
-          <div className="flex flex-col space-y-3 mt-4">
-            <a href="tel:+8801310101616" className="flex items-center text-sm hover:text-white transition-colors">
-              <Phone size={16} className="mr-3 text-emerald-base" />
-              +88-01310101616
-            </a>
-            <a href="mailto:kagojbari@gmail.com" className="flex items-center text-sm hover:text-white transition-colors">
-              <Mail size={16} className="mr-3 text-emerald-base" />
-              kagojbari@gmail.com
-            </a>
-            <div className="flex items-center text-sm">
-              <MapPin size={16} className="mr-3 text-emerald-base" />
-              Dhaka, Bangladesh
-            </div>
-          </div>
+        {/* Column 1: Brand Logo */}
+        <div className="md:col-span-2 flex items-center">
+          <Image
+            src="/KB_Logo_Text.png"
+            alt="Kagojbari Logo"
+            width={240}
+            height={64}
+            className="brightness-0 invert opacity-90"
+          />
         </div>
 
-        {/* Column 2: Platform Links */}
+        {/* Column 2: Contact/Links */}
         <div className="flex flex-col space-y-4">
-          <h4 className="text-white font-semibold text-lg mb-2">Platform</h4>
-          {footerLinks.map((link) => (
-            <Link 
-              key={link.name} 
-              href={link.href}
-              className="text-sm hover:text-emerald-base transition-colors w-fit"
-            >
-              {link.name}
-            </Link>
-          ))}
+          <h4 className="text-white font-semibold text-lg mb-2">Contact</h4>
+          <Link href="#" className="text-sm hover:text-white transition-colors">About Us</Link>
+          <Link href="#" className="text-sm hover:text-white transition-colors">Contact Us</Link>
+          <Link href="#" className="text-sm hover:text-white transition-colors">Terms of Contracts</Link>
+          <Link href="#" className="text-sm hover:text-white transition-colors">Privacy Policy</Link>
         </div>
 
-        {/* Column 3: Regulatory & Corporate Compliance */}
+        {/* Column 3: Contact Info */}
         <div className="flex flex-col space-y-4">
-          <h4 className="text-white font-semibold text-lg mb-2">Corporate Integrity</h4>
-          <p className="text-sm leading-relaxed">
-            Kagojbari EdTech Ltd is a private limited company incorporated in Bangladesh.
-          </p>
-          <div className="bg-white/5 border border-white/10 p-4 rounded-lg mt-2">
-            <p className="text-xs text-slate-300 font-medium">RJSC Certificate of Incorporation:</p>
-            <p className="text-emerald-glow font-bold mt-1 tracking-wide">No. C-208016/2026</p>
+          <h4 className="text-white font-semibold text-lg mb-2">Footer</h4>
+          <div className="flex items-center text-sm">
+            <Phone size={14} className="mr-3" />
+            +88-01310101616
           </div>
+          <div className="flex items-center text-sm">
+            <Phone size={14} className="mr-3" />
+            +88-017XXXXXXXX
+          </div>
+          <a href="mailto:kagojbari@gmail.com" className="flex items-center text-sm hover:text-white transition-colors">
+            <Mail size={14} className="mr-3" />
+            kagojbari@gmail.com
+          </a>
+          <a href="https://kagojbari.org" className="flex items-center text-sm hover:text-white transition-colors">
+            <Globe size={14} className="mr-3" />
+            www.kagojbari.org
+          </a>
         </div>
 
       </div>
 
-      {/* Bottom Section: Clinical Liability Disclaimer */}
-      <div className="max-w-7xl mx-auto mt-16 pt-8 border-t border-slate-800">
-        <p className="text-xs text-slate-500 leading-normal max-w-4xl">
-          <strong className="text-slate-400">Clinical Liability Disclaimer:</strong> All medical and telemedicine services are legally delivered and owned by Medico Bio and other licensed third-party clinical partners. Kagojbari EdTech Ltd is contractually shielded from clinical liability, focusing solely on distribution logistics, school enrollment coordination, and digital identity management.
-        </p>
-        <p className="text-xs text-slate-600 mt-4">
-          &copy; {new Date().getFullYear()} Kagojbari EdTech Ltd. All rights reserved.
-        </p>
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center text-xs text-slate-500">
+        <p>&copy; {new Date().getFullYear()} Kagojbari EdTech Ltd MVP.</p>
+        <p className="mt-4 md:mt-0">RJSC Certificate: No. C-208016/2026</p>
       </div>
     </footer>
   );
