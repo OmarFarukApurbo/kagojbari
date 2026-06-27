@@ -15,6 +15,8 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const navActive = scrolled || isMobileMenuOpen;
+
   const navLinks = [
     { name: "Vision", href: "#vision" },
     { name: "Traction", href: "#traction" },
@@ -25,40 +27,39 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Desktop Floating Navbar */}
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'pt-2 md:pt-4 px-2 md:px-6' : 'pt-4 md:pt-8 px-4 md:px-8'} pointer-events-none`}>
-        <div className={`max-w-6xl mx-auto bg-white/95 backdrop-blur-xl border border-slate-200/50 shadow-lg shadow-slate-200/20 rounded-2xl flex justify-between items-center transition-all duration-300 ${scrolled ? 'h-16 md:h-20 px-4 md:px-6' : 'h-20 md:h-24 px-6 md:px-8'} pointer-events-auto`}>
+      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${navActive ? 'bg-white/95 backdrop-blur-xl shadow-md py-4' : 'bg-transparent py-6'}`}>
+        <div className="max-w-7xl mx-auto flex justify-between items-center px-6 md:px-12">
           
-          {/* Left: Prominent Logo */}
+          {/* Logo */}
           <Link href="/" className="flex-shrink-0 flex items-center group">
             <Image
               src="/KB_Logo_Text.png"
               alt="Kagojbari EdTech Ltd Logo"
               width={240}
               height={70}
-              className="h-10 md:h-14 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+              className={`w-auto object-contain transition-all duration-300 ${navActive ? 'h-10 md:h-12' : 'h-12 md:h-16 brightness-0 invert drop-shadow-md'} group-hover:scale-105`}
               priority
             />
           </Link>
 
-          {/* Center: Desktop Links */}
+          {/* Desktop Links */}
           <div className="hidden lg:flex items-center space-x-8">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
-                className="text-sm font-bold text-slate-600 hover:text-emerald-deep transition-colors duration-200"
+                className={`text-sm font-bold transition-colors duration-200 ${navActive ? 'text-slate-600 hover:text-emerald-deep' : 'text-slate-200 hover:text-white drop-shadow-md'}`}
               >
                 {link.name}
               </Link>
             ))}
           </div>
 
-          {/* Right: CTA Button */}
+          {/* CTA Button */}
           <div className="hidden lg:flex items-center">
             <Link
               href="#partner"
-              className="bg-emerald-base hover:bg-emerald-deep text-white px-6 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 shadow-md shadow-emerald-base/20 hover:shadow-emerald-base/40 hover:-translate-y-0.5"
+              className={`px-6 py-2.5 rounded-md text-sm font-bold transition-all duration-300 shadow-md ${navActive ? 'bg-emerald-base hover:bg-emerald-deep text-white shadow-emerald-base/20' : 'bg-white hover:bg-emerald-base hover:text-white text-emerald-deep shadow-black/20'}`}
             >
               Partner Portal
             </Link>
@@ -68,7 +69,7 @@ export default function Navbar() {
           <div className="lg:hidden flex items-center">
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="text-charcoal-dark hover:text-emerald-base focus:outline-none transition-colors p-2"
+              className={`focus:outline-none transition-colors p-2 ${navActive ? 'text-charcoal-dark hover:text-emerald-base' : 'text-white hover:text-emerald-glow'}`}
             >
               {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
@@ -78,7 +79,7 @@ export default function Navbar() {
 
       {/* Mobile Menu Fullscreen Overlay */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden fixed inset-0 z-40 bg-white/95 backdrop-blur-3xl flex flex-col pt-32 px-6 animate-in fade-in zoom-in-95 duration-200">
+        <div className="lg:hidden fixed inset-0 z-40 bg-white flex flex-col pt-32 px-6 animate-in fade-in duration-200">
           <div className="flex flex-col space-y-4">
             {navLinks.map((link) => (
               <Link

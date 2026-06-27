@@ -8,17 +8,19 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 border-b border-slate-700 pb-12 mb-8">
         
         {/* Column 1: Brand Logo & Description */}
-        <div className="md:col-span-2 flex flex-col items-start">
+        <div className="md:col-span-2 flex flex-col md:flex-row items-start md:items-center gap-6">
           <Image
             src="/KB_Logo_Text.png"
             alt="Kagojbari Logo"
             width={200}
             height={56}
-            className="w-40 md:w-56 h-auto brightness-0 invert opacity-90 mb-6"
+            className="w-36 md:w-48 h-auto brightness-0 invert opacity-90 flex-shrink-0"
           />
-          <p className="text-sm text-slate-400 leading-relaxed max-w-sm">
-            Kagojbari EdTech Ltd is building the ultimate digital and physical backbone for education across Bangladesh. We integrate supply infrastructure, health, and student identity into one powerful platform.
-          </p>
+          <div className="h-full md:border-l md:border-slate-600 md:pl-6">
+            <p className="text-sm text-slate-400 leading-relaxed max-w-sm">
+              Kagojbari EdTech Ltd is building the ultimate digital and physical backbone for education across Bangladesh. We integrate supply infrastructure, health, and student identity into one powerful platform.
+            </p>
+          </div>
         </div>
 
         {/* Column 2: Quick Links */}
