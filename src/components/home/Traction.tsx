@@ -9,8 +9,8 @@ export default function Traction() {
     <section className="py-16 px-6 bg-white">
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-10">
-          <h2 className="text-2xl md:text-3xl font-bold text-charcoal-dark">Metrics Section</h2>
-          <p className="text-slate-500 mt-2">Encompassing our accelerated growth metrics</p>
+          <h2 className="text-2xl md:text-3xl font-bold text-charcoal-dark">Nationwide Impact</h2>
+          <p className="text-slate-500 mt-2">Tracking our footprint across Bangladesh</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

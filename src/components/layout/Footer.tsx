@@ -4,46 +4,45 @@ import { Mail, Phone, Globe } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#2D2D2D] text-slate-300 py-16 px-6">
+    <footer className="bg-[#2D2D2D] text-slate-300 py-16 px-6 md:px-12">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 border-b border-slate-700 pb-12 mb-8">
         
-        {/* Column 1: Brand Logo */}
-        <div className="md:col-span-2 flex items-center">
+        {/* Column 1: Brand Logo & Description */}
+        <div className="md:col-span-2 flex flex-col items-start">
           <Image
             src="/KB_Logo_Text.png"
             alt="Kagojbari Logo"
-            width={240}
-            height={64}
-            className="brightness-0 invert opacity-90"
+            width={200}
+            height={56}
+            className="w-40 md:w-56 h-auto brightness-0 invert opacity-90 mb-6"
           />
+          <p className="text-sm text-slate-400 leading-relaxed max-w-sm">
+            Kagojbari EdTech Ltd is building the ultimate digital and physical backbone for education across Bangladesh. We integrate supply infrastructure, health, and student identity into one powerful platform.
+          </p>
         </div>
 
-        {/* Column 2: Contact/Links */}
-        <div className="flex flex-col space-y-4">
-          <h4 className="text-white font-semibold text-lg mb-2">Contact</h4>
-          <Link href="#" className="text-sm hover:text-white transition-colors">About Us</Link>
-          <Link href="#" className="text-sm hover:text-white transition-colors">Contact Us</Link>
-          <Link href="#" className="text-sm hover:text-white transition-colors">Terms of Contracts</Link>
-          <Link href="#" className="text-sm hover:text-white transition-colors">Privacy Policy</Link>
+        {/* Column 2: Quick Links */}
+        <div className="flex flex-col space-y-4 md:mt-2">
+          <h4 className="text-white font-bold text-lg mb-2">Company</h4>
+          <Link href="#vision" className="text-sm text-slate-400 hover:text-white transition-colors">About Us</Link>
+          <Link href="#partner" className="text-sm text-slate-400 hover:text-white transition-colors">Contact Us</Link>
+          <Link href="#" className="text-sm text-slate-400 hover:text-white transition-colors">Terms of Contracts</Link>
+          <Link href="#" className="text-sm text-slate-400 hover:text-white transition-colors">Privacy Policy</Link>
         </div>
 
         {/* Column 3: Contact Info */}
-        <div className="flex flex-col space-y-4">
-          <h4 className="text-white font-semibold text-lg mb-2">Footer</h4>
-          <div className="flex items-center text-sm">
-            <Phone size={14} className="mr-3" />
+        <div className="flex flex-col space-y-4 md:mt-2">
+          <h4 className="text-white font-bold text-lg mb-2">Connect</h4>
+          <div className="flex items-center text-sm text-slate-400">
+            <Phone size={16} className="mr-3 text-emerald-base" />
             +88-01310101616
           </div>
-          <div className="flex items-center text-sm">
-            <Phone size={14} className="mr-3" />
-            +88-017XXXXXXXX
-          </div>
-          <a href="mailto:kagojbari@gmail.com" className="flex items-center text-sm hover:text-white transition-colors">
-            <Mail size={14} className="mr-3" />
+          <a href="mailto:kagojbari@gmail.com" className="flex items-center text-sm text-slate-400 hover:text-white transition-colors">
+            <Mail size={16} className="mr-3 text-emerald-base" />
             kagojbari@gmail.com
           </a>
-          <a href="https://kagojbari.org" className="flex items-center text-sm hover:text-white transition-colors">
-            <Globe size={14} className="mr-3" />
+          <a href="https://kagojbari.org" className="flex items-center text-sm text-slate-400 hover:text-white transition-colors">
+            <Globe size={16} className="mr-3 text-emerald-base" />
             www.kagojbari.org
           </a>
         </div>
@@ -52,7 +51,7 @@ export default function Footer() {
 
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center text-xs text-slate-500">
         <p>&copy; {new Date().getFullYear()} Kagojbari EdTech Ltd MVP.</p>
-        <p className="mt-4 md:mt-0">RJSC Certificate: No. C-208016/2026</p>
+        <p className="mt-4 md:mt-0 font-medium">RJSC Certificate: No. C-208016/2026</p>
       </div>
     </footer>
   );

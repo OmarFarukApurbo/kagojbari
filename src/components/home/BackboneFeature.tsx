@@ -32,7 +32,7 @@ export default function BackboneFeature() {
             The Backbone School
           </h2>
           <p className="text-xl text-slate-500 font-bengali mb-6">
-            আজকের, মাজের সকালা
+            স্মার্ট বাংলাদেশের স্মার্ট স্কুল
           </p>
           <p className="text-lg text-slate-600 leading-relaxed mb-8">
             The Backbone School is a modern, upazila-level academic network delivering a globally competitive curriculum. We provide advanced educational frameworks and facilities designed to elevate the standard of learning across the nation.
