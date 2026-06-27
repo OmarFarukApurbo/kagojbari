@@ -33,7 +33,7 @@ export default function AboutPage() {
             <h2 className="text-2xl md:text-3xl font-bold text-charcoal-dark mb-6">Who We Are</h2>
             <div className="space-y-4 text-slate-600 leading-relaxed">
               <p>
-                Kagojbari EdTech Ltd is a Bangladesh government-approved, RJSC-registered private limited company building a multi-service education infrastructure ecosystem for schools, students, and families across Bangladesh. 
+                Kagojbari is a Bangladesh government-approved, RJSC-registered private limited company building a multi-service education infrastructure ecosystem for schools, students, and families across Bangladesh. 
               </p>
               <p>
                 The initiative began operations to address persistent structural gaps in the education system by integrating physical supplies, digital infrastructure, identity systems, health access, content, skills, and community services under a single platform. We are not just a supply chain; we are changing how education works.

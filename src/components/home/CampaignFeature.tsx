@@ -11,8 +11,8 @@ export default function CampaignFeature() {
           <h2 className="text-3xl md:text-5xl font-extrabold text-charcoal-dark mb-6 leading-tight">
             Guinness World <br/>Record Campaign
           </h2>
-          <p className="text-lg text-slate-600 leading-relaxed mb-8">
-            Kagojbari EdTech is orchestrating a historic campaign to distribute essential educational materials nationwide. This initiative aims to bridge educational disparities, support marginal areas, and establish Bangladesh as a globally recognized, education-friendly nation by breaking a Guinness World Record in 2026.
+          <p className="text-slate-500 text-lg leading-relaxed max-w-2xl mt-4">
+            Kagojbari is orchestrating a historic campaign to distribute essential educational materials nationwide. This initiative aims to bridge educational disparities, support marginal areas, and establish Bangladesh as a globally recognized, education-friendly nation by breaking a Guinness World Record in 2026.
           </p>
           <Link 
             href="#campaign"

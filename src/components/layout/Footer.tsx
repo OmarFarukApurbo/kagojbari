@@ -17,8 +17,8 @@ export default function Footer() {
             className="w-36 md:w-48 h-auto brightness-0 invert opacity-90 flex-shrink-0"
           />
           <div className="md:border-l md:border-slate-600 md:pl-6 flex items-center h-auto py-2">
-            <p className="text-sm text-slate-400 leading-relaxed max-w-sm">
-              Kagojbari EdTech Ltd is building the ultimate digital and physical backbone for education across Bangladesh. We integrate supply infrastructure, health, and student identity into one powerful platform.
+            <p className="text-sm text-slate-400 max-w-sm mt-4 leading-relaxed">
+              Kagojbari is building the ultimate digital and physical backbone for education across Bangladesh. We integrate supply infrastructure, health, and student identity into one powerful platform.
             </p>
           </div>
         </div>
@@ -52,8 +52,8 @@ export default function Footer() {
 
       </div>
 
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center text-xs text-slate-500">
-        <p>&copy; {new Date().getFullYear()} Kagojbari EdTech Ltd MVP.</p>
+      <div className="border-t border-slate-800 py-6 text-center text-sm text-slate-500">
+        <p>&copy; {new Date().getFullYear()} Kagojbari Ltd MVP.</p>
         <p className="mt-4 md:mt-0 font-medium">RJSC Certificate: No. C-208016/2026</p>
       </div>
     </footer>

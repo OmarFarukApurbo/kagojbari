@@ -87,7 +87,7 @@ export default function Navbar() {
             <Link href="/" className="flex-shrink-0 flex items-center group relative z-[10000]">
               <Image
                 src="/KB_Logo_Text.png"
-                alt="Kagojbari EdTech Ltd Logo"
+                alt="Kagojbari Logo"
                 width={240}
                 height={70}
                 className={`w-auto object-contain transition-all duration-300 ${navActive ? 'h-10 md:h-12' : 'h-10 md:h-16'} ${useDarkText ? '' : 'brightness-0 invert drop-shadow-md'} group-hover:scale-105`}

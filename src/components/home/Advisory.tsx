@@ -12,7 +12,7 @@ export default function Advisory() {
       name: "Dr. Md. Atiar Rahman",
       title: "VC, Rangamati Science & Tech",
       image: "/advisor_2.png",
-      quote: "Kagojbari EdTech ensures access and professional resources network smoothly in their mission to elevate rural student capabilities."
+      quote: "Kagojbari ensures access and professional resources network smoothly in their mission to elevate rural student capabilities."
     },
     {
       name: "Poet Abdul Hye Sikder",

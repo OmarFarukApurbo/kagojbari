@@ -19,7 +19,7 @@ const hindSiliguri = Hind_Siliguri({
 });
 
 export const metadata: Metadata = {
-  title: "Kagojbari EdTech Ltd | Ecosystem Powering Bangladesh",
+  title: "Kagojbari | Ecosystem Powering Bangladesh",
   description: "One Ecosystem Powering Every Learner in Bangladesh. Integrating physical supply infrastructure, digital identity, and essential health services.",
 };
 
