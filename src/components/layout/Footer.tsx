@@ -6,7 +6,7 @@ export default function Footer() {
   return (
     <footer className="bg-[#2D2D2D] text-slate-300 py-16 px-6 md:px-12">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 border-b border-slate-700 pb-12 mb-8">
-        
+
         {/* Column 1: Brand Logo & Description */}
         <div className="md:col-span-2 flex flex-col md:flex-row items-start md:items-center gap-6">
           <Image
@@ -38,7 +38,7 @@ export default function Footer() {
           <h4 className="text-white font-bold text-lg mb-2">Connect</h4>
           <div className="flex items-center text-sm text-slate-400">
             <Phone size={16} className="mr-3 text-emerald-base" />
-            +88-01310101616
+            +880 1714-787878
           </div>
           <a href="mailto:kagojbari@gmail.com" className="flex items-center text-sm text-slate-400 hover:text-white transition-colors">
             <Mail size={16} className="mr-3 text-emerald-base" />

@@ -1,26 +1,49 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { PlayCircle } from "lucide-react";
 
 export default function BackboneFeature() {
+  const [isPlaying, setIsPlaying] = useState(false);
+
   return (
     <section id="backbone-school" className="py-24 px-6 md:px-12 bg-white">
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16">
         
         {/* Left: Image/Video Thumbnail */}
         <div className="w-full lg:w-1/2 relative group">
-          <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[4/3] w-full">
-            <Image 
-              src="/backbone_school.png" 
-              alt="The Backbone School environment" 
-              fill
-              className="object-cover group-hover:scale-105 transition-transform duration-700"
-            />
-            <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors duration-300 flex items-center justify-center">
-              <button className="bg-white/20 backdrop-blur-md p-4 rounded-full border border-white/50 text-white hover:bg-white hover:text-emerald-base hover:scale-110 transition-all duration-300 shadow-xl">
-                <PlayCircle size={48} strokeWidth={1.5} />
-              </button>
-            </div>
+          <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[4/3] w-full bg-black">
+            {isPlaying ? (
+              <video
+                src="/Backbone_School.mp4"
+                poster="/backbone_school.png"
+                autoPlay
+                controls
+                playsInline
+                className="w-full h-full object-cover"
+              />
+            ) : (
+              <>
+                <Image 
+                  src="/backbone_school.png" 
+                  alt="The Backbone School environment" 
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                  priority
+                />
+                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors duration-300 flex items-center justify-center">
+                  <button 
+                    onClick={() => setIsPlaying(true)}
+                    className="bg-white/20 backdrop-blur-md p-4 rounded-full border border-white/50 text-white hover:bg-white hover:text-emerald-base hover:scale-110 transition-all duration-300 shadow-xl cursor-pointer"
+                    aria-label="Play video"
+                  >
+                    <PlayCircle size={48} strokeWidth={1.5} />
+                  </button>
+                </div>
+              </>
+            )}
           </div>
           {/* Decorative element */}
           <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-emerald-base/10 rounded-full blur-2xl -z-10"></div>
